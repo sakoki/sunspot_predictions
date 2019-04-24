@@ -7,30 +7,10 @@ import seaborn as sns
 
 # Custom function
 from decorators import timer
-
-# import statsmodels
+from timeseries import time_series_split
 
 # Set figure aesthetics
 sns.set_style("darkgrid")
-
-def time_series_split(data, split):
-    """Split time series data into train and test set
-
-    :param DataFrame data: data frame with n x time points and m x variables
-    :param float split: proportion of train and test split
-    :return: split train and test data
-    :rtype: DataFrame
-    """
-
-    split_idx = int(data.shape[0] * split)
-    train = data.iloc[:split_idx, :]
-    test = data.iloc[split_idx:, :]
-
-    print("Size of original data: {}".format(data.shape[0]))
-    print("Size of training data: {}".format(train.shape[0]))
-    print("Size of test data: {}".format(test.shape[0]))
-
-    return train, test
 
 
 def ARIMA_forecast(train, P, D, Q):
